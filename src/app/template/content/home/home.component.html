@@ -1,0 +1,39 @@
+<div class="card shadow">
+    <div class="card-header bg-transparent">
+        <h5 class="mb-0">Dashboard</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="float-right">
+                    <label class="text-info">
+                        CountDown 
+                        <countdown-timer (zeroTrigger)="onFinished()" [end]="settingtime"></countdown-timer>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Action</th>
+                        <th>Bider</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dataskripsi;let i = index">
+                        <td scope="row">{{i+1}}</td>
+                        <td>{{item.judul_skripsi}}</td>
+                        <td>
+                            <button class="btn {{getMyStylesclass(statustime,item.owner)}} btn-sm" (click)="create(item)" [disabled]="statustime || item.owner !== null || item.owner || dataprofile.type_in_group == 'anggota'" [ngStyle]="getMyStyles(statustime,item.owner)">Bind Here</button>
+                        </td>
+                        <td>{{item.username}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

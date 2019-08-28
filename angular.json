@@ -28,9 +28,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/js/plugins/nucleo/css/nucleo.css",
+              "src/assets/css/argon-dashboard.css",
+              "src/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css"
+
+          ],
+          "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/plugins/chart.js/dist/Chart.min.js",
+              "src/assets/js/plugins/chart.js/dist/Chart.extension.js",
+              "src/assets/js/argon-dashboard.min.js"
+          ]
           },
           "configurations": {
             "production": {
@@ -88,9 +99,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+                "src/styles.scss",
+                "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "src/assets/js/plugins/nucleo/css/nucleo.css",
+                "src/assets/css/argon-dashboard.css",
+                "src/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css"
+
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                "src/assets/js/plugins/chart.js/dist/Chart.min.js",
+                "src/assets/js/plugins/chart.js/dist/Chart.extension.js",
+                "src/assets/js/argon-dashboard.min.js"
+            ]
           }
         },
         "lint": {

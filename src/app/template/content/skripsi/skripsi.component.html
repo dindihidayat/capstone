@@ -1,0 +1,86 @@
+<div class="card shadow">
+    <div class="card-header">
+        <h5>
+            Publis Skripsi
+            <button class="btn btn-sm btn-info float-right" (click)="open(content,'save','')"><i class="ni ni-fat-add"></i> Judul Skripsi</button>
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Judul</th>
+                        <th>Deskripsi</th>
+                        <th>publish</th>
+                        <th>Tanggal Buat</th>
+                        <th>Diambil Oleh Kelompok</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listdata;let i = index;">
+                        <td>{{i + 1}}</td>
+                        <td>{{item.judul_skripsi}}</td>
+                        <td>{{item.deskripsi}}</td>
+                        <td>
+                            <span class="{{generatepublish(item.status,'class')}} text-bold">
+                                {{generatepublish(item.status,'content')}}
+                            </span>
+                        </td>
+                        <td>{{item.created}}</td>
+                        <td>
+                            <span class="text-success">{{item.nama_group}}</span>
+                        </td>
+                        <td style="text-align: center">
+                            <button class="btn btn-sm btn-warning" (click)="open(content,'edit',item)"><i class="ni ni-folder-17"></i></button>
+                            <button class="btn btn-sm btn-danger" (click)="deleteskripsi(item.id_skripsi)"><i class="ni ni-fat-remove"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Skripsi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <form [formGroup]="fg" (submit)="submitForm(fg.value)" role="form">
+                        <div class="form-group" [ngClass]="{'has-error':!fg.controls['judul'].valid && fg.controls['judul'].touched}">
+                            <label>Judul</label>
+                            <input type="text" class="form-control" placeholder="..." [formControl]="fg.controls['judul']">
+                            <div *ngIf="fg.controls['judul'].hasError('required') && fg.controls['judul'].touched"><span class="text-danger" style="font-size: 10px">Judul Minimal 5 Kata</span></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            <input type="text" class="form-control" placeholder="..." [formControl]="fg.controls['deskripsi']">
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error':!fg.controls['status'].valid && fg.controls['status'].touched}">
+                            <label>Langsung Publish ?</label><br>
+                            <label>
+                                <input type="radio" class="radio" value="ready" name="publish" [formControl]="fg.controls['status']">Ya
+                            </label>
+                            <label>
+                                <input type="radio" class="radio" value="not_ready" name="publish" [formControl]="fg.controls['status']">Tidak
+                            </label>
+                            <div *ngIf="fg.controls['status'].hasError('required') && fg.controls['status'].touched"><span class="text-danger" style="font-size: 10px">Pilih Salahsatu .</span></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-info float-right" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
