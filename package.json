@@ -25,7 +25,7 @@
     "bootstrap": "^4.3.1",
     "file-saver": "^2.0.2",
     "firebase": "^6.3.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-countdown": "^3.2.0",
     "ngx-countdown-timer": "^0.1.9",
     "rxjs": "~6.4.0",
